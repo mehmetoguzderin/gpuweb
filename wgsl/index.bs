@@ -5364,7 +5364,7 @@ function_decl
   : attribute_list* function_header compound_statement
 
 function_header
-  : FN IDENT PAREN_LEFT param_list PAREN_RIGHT function_return_type_decl_optional
+  : FN IDENT PAREN_LEFT param_list? PAREN_RIGHT function_return_type_decl_optional
 
 function_return_type_decl_optional
   :
