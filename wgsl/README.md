@@ -3,6 +3,7 @@
 ## Dependencies
 
 The following tools are used:
+
 * For building the specification HTML from source: [Bikeshed](https://tabatkins.github.io/bikeshed)
   * If Bikeshed is not installed locally, the Bikeshed web API will be used to generate the specification.
       This is generally slower, and requires a connection to the internet.
