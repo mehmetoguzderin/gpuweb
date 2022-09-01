@@ -1,4 +1,4 @@
-# WebGPU Shading Language Specification
+# WebGPU Shading Language Specification (WGSL)
 
 ## Dependencies
 
