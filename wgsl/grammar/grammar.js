@@ -14,7 +14,7 @@
 module.exports = grammar({
     name: 'wgsl',
 
-    externals: $ => [
+    externals: $ => [
         $._block_comment,
     ],
 
@@ -142,7 +142,7 @@ module.exports = grammar({
             token('texture_depth_cube_array'),
             token('texture_depth_multisampled_2d')
         ),
-        type_alias_decl: $ => seq(token('type'), $.ident, token('='), $.type_specifier),
+        type_alias_decl: $ => seq(token('alias'), $.ident, token('='), $.type_specifier),
         type_specifier: $ => choice(
             $.ident,
             $.type_specifier_without_ident
@@ -464,6 +464,7 @@ module.exports = grammar({
             token('auto'),
             token('await'),
             token('become'),
+            token('bf16'),
             token('binding_array'),
             token('cast'),
             token('catch'),
@@ -495,6 +496,7 @@ module.exports = grammar({
             token('extends'),
             token('extern'),
             token('external'),
+            token('f64'),
             token('fallthrough'),
             token('filter'),
             token('final'),
@@ -507,6 +509,9 @@ module.exports = grammar({
             token('groupshared'),
             token('handle'),
             token('highp'),
+            token('i16'),
+            token('i64'),
+            token('i8'),
             token('impl'),
             token('implements'),
             token('import'),
@@ -550,6 +555,7 @@ module.exports = grammar({
             token('protected'),
             token('pub'),
             token('public'),
+            token('quat'),
             token('readonly'),
             token('ref'),
             token('regardless'),
@@ -578,10 +584,14 @@ module.exports = grammar({
             token('throw'),
             token('trait'),
             token('try'),
+            token('type'),
             token('typedef'),
             token('typeid'),
             token('typename'),
             token('typeof'),
+            token('u16'),
+            token('u64'),
+            token('u8'),
             token('union'),
             token('unless'),
             token('unorm'),
@@ -599,7 +609,7 @@ module.exports = grammar({
             token('yield')
         ),
         ident: $ => $.ident_pattern_token,
-        _comment: $ => seq(token('//'), token(/.*/)),
+        _comment: $ => token('//.*'),
         _blankspace: $ => token(/[\u0020\u0009\u000a\u000b\u000c\u000d\u0085\u200e\u200f\u2028\u2029]/uy)
     },
 });
