@@ -686,13 +686,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebGPU Shading Language</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-02-04">4 February 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-02-10">10 February 2023</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
-      <dd><a class="u-url" href="https://gpuweb.github.io/gpuweb/wgsl/">https://gpuweb.github.io/gpuweb/wgsl/</a><br><a href="https://github.com/gpuweb/gpuweb/blob/c1553c9bf76e347584b967a3ece2b86efc60a0a5/wgsl/index.bs">https://github.com/gpuweb/gpuweb/blob/c1553c9bf76e347584b967a3ece2b86efc60a0a5/wgsl/index.bs</a>
+      <dd><a class="u-url" href="https://gpuweb.github.io/gpuweb/wgsl/">https://gpuweb.github.io/gpuweb/wgsl/</a><br><a href="https://github.com/gpuweb/gpuweb/blob/ae8b4a2c06dd90494fb084f084a0ebf004c0ebce/wgsl/index.bs">https://github.com/gpuweb/gpuweb/blob/ae8b4a2c06dd90494fb084f084a0ebf004c0ebce/wgsl/index.bs</a>
       <dt>Latest published version:
       <dd><a href="https://www.w3.org/TR/WGSL/">https://www.w3.org/TR/WGSL/</a>
       <dt>Feedback:
@@ -751,7 +751,7 @@ Learn more about <a href="http://www.w3.org/community/">W3C Community and Busine
      <a href="#textual-structure"><span class="secno">3</span> <span class="content">Textual Structure</span></a>
      <ol class="toc">
       <li><a href="#parsing"><span class="secno">3.1</span> <span class="content">Parsing</span></a>
-      <li><a href="#blankspace-and-line-breaks"><span class="secno">3.2</span> <span class="content">Blankspace and line breaks</span></a>
+      <li><a href="#blankspace-and-line-breaks"><span class="secno">3.2</span> <span class="content">Blankspace and Line Breaks</span></a>
       <li><a href="#comments"><span class="secno">3.3</span> <span class="content">Comments</span></a>
       <li><a href="#tokens"><span class="secno">3.4</span> <span class="content">Tokens</span></a>
       <li>
@@ -1203,7 +1203,7 @@ Learn more about <a href="http://www.w3.org/community/">W3C Community and Busine
        </ol>
      </ol>
     <li><a href="#grammar-recursive-descent"><span class="secno">18</span> <span class="content">Grammar for Recursive Descent Parsing</span></a>
-    <li><a href="#text-wgsl-media-type"><span class="secno"></span> <span class="content">Appendix A: The <code>text/wgsl</code> media type</span></a>
+    <li><a href="#text-wgsl-media-type"><span class="secno"></span> <span class="content">Appendix A: The <code>text/wgsl</code> Media Type</span></a>
     <li>
      <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
      <ol class="toc">
@@ -1448,7 +1448,7 @@ Then θ increases as the comparison ray moves counterclockwise.</p>
     <li data-md>
      <p>truncate(−∞) = −∞</p>
     <li data-md>
-     <p>for real number <var>x</var>, computes the nearest whole number whose absolute value is less than or equal to <var>x</var>:</p>
+     <p>for real number <var>x</var>, computes the nearest whole number whose absolute value is less than or equal to the absolute value of <var>x</var>:</p>
      <ul>
       <li data-md>
        <p>truncate(<var>x</var>) = ⌊<var>x</var>⌋ if <var>x</var> ≥ 0, and ⌈<var>x</var>⌉ if <var>x</var> &lt; 0.</p>
@@ -1575,7 +1575,7 @@ results in a shader-creation, pipeline-creation, or dynamic error.</p>
    <p>The WebGPU specification describes the consequences of each kind of error.</p>
    <h2 class="heading settled" data-level="3" id="textual-structure"><span class="secno">3. </span><span class="content">Textual Structure</span><a class="self-link" href="#textual-structure"></a></h2>
    <p>The <code>text/wgsl</code> media type is used to identify content as a WGSL program.
-See <a href="#text-wgsl-media-type">Appendix A: The text/wgsl media type</a>.</p>
+See <a href="#text-wgsl-media-type">Appendix A: The text/wgsl Media Type</a>.</p>
    <p>A WGSL program is Unicode text using the UTF-8 encoding, with no byte order mark (BOM).</p>
    <p>WGSL program text consists of a sequence of Unicode <a data-link-type="dfn" href="https://www.unicode.org/versions/Unicode14.0.0/UnicodeStandard-14.0.pdf#" id="termref-for-">code points</a>, grouped into contiguous non-empty sets forming:</p>
    <ul>
@@ -1622,7 +1622,7 @@ When the parser requests the next token:</p>
     <li data-md>
      <p>the <a data-link-type="dfn" href="#syntax-translation_unit" id="ref-for-syntax-translation_unit①">translation_unit</a> grammar rule does not match the entire token sequence.</p>
    </ul>
-   <h3 class="heading settled" data-level="3.2" id="blankspace-and-line-breaks"><span class="secno">3.2. </span><span class="content">Blankspace and line breaks</span><a class="self-link" href="#blankspace-and-line-breaks"></a></h3>
+   <h3 class="heading settled" data-level="3.2" id="blankspace-and-line-breaks"><span class="secno">3.2. </span><span class="content">Blankspace and Line Breaks</span><a class="self-link" href="#blankspace-and-line-breaks"></a></h3>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="blankspace">Blankspace</dfn> is any combination of one or more of code points from the Unicode <a data-link-type="dfn" href="https://www.unicode.org/reports/tr31/tr31-35.html#unicode-standard-annex-31-for-unicode-version-1400" id="ref-for-unicode-standard-annex-31-for-unicode-version-1400">Pattern_White_Space</a> property.
 The following is the set of code points in <a data-link-type="dfn" href="https://www.unicode.org/reports/tr31/tr31-35.html#unicode-standard-annex-31-for-unicode-version-1400" id="ref-for-unicode-standard-annex-31-for-unicode-version-1400①">Pattern_White_Space</a>:</p>
    <ul>
@@ -3753,7 +3753,7 @@ describe the contents of memory.</p>
    <p>Memory consists of a set of distinct <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="memory-locations">memory locations</dfn>.
 Each memory location is 8-bits in size.
 An operation affecting memory interacts with a set of one or more memory locations.
-Memory operations on structures and arrays <a data-link-type="dfn" href="#behavioral-requirements" id="ref-for-behavioral-requirements③">will</a> not
+Memory operations on <a data-link-type="dfn" href="#composite" id="ref-for-composite②">composites</a> <a data-link-type="dfn" href="#behavioral-requirements" id="ref-for-behavioral-requirements③">will</a> not
 access padding memory locations.</p>
    <p>Two sets of memory locations <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="overlap">overlap</dfn> if the intersection of
 their sets of memory locations is non-empty.</p>
@@ -5919,11 +5919,11 @@ store type.</p>
 of the underlying type (<a data-link-type="dfn" href="#type-concrete" id="ref-for-type-concrete②②">concrete</a> <a data-link-type="dfn" href="#integer-scalar" id="ref-for-integer-scalar⑤">integer scalar</a>).</p>
       <li data-md>
        <p>Otherwise, if the <a data-link-type="dfn" href="#store-type" id="ref-for-store-type①⑨">store type</a> is not <a data-link-type="dfn" href="#constructible" id="ref-for-constructible①②">constructible</a>, the <a data-link-type="dfn" href="#zero-value" id="ref-for-zero-value⑤">zero
-value</a> is determined by recursively applying these rules to each <a data-link-type="dfn" href="#components" id="ref-for-components">component</a> of the <a data-link-type="dfn" href="#composite" id="ref-for-composite②">composite</a> until a <a data-link-type="dfn" href="#constructible" id="ref-for-constructible①③">constructible</a> type is
+value</a> is determined by recursively applying these rules to each <a data-link-type="dfn" href="#components" id="ref-for-components">component</a> of the <a data-link-type="dfn" href="#composite" id="ref-for-composite③">composite</a> until a <a data-link-type="dfn" href="#constructible" id="ref-for-constructible①③">constructible</a> type is
 encountered.</p>
        <ul>
         <li data-md>
-         <p class="note" role="note"><span class="marker">Note:</span> This commonly occurs when using an <a data-link-type="dfn" href="#array" id="ref-for-array⑧">array</a> with a <a data-link-type="dfn" href="#pipeline-overridable" id="ref-for-pipeline-overridable④">pipeline-overridable</a> <a data-link-type="dfn" href="#element-count" id="ref-for-element-count④">element count</a> or a <a data-link-type="dfn" href="#composite" id="ref-for-composite③">composite</a> that
+         <p class="note" role="note"><span class="marker">Note:</span> This commonly occurs when using an <a data-link-type="dfn" href="#array" id="ref-for-array⑧">array</a> with a <a data-link-type="dfn" href="#pipeline-overridable" id="ref-for-pipeline-overridable④">pipeline-overridable</a> <a data-link-type="dfn" href="#element-count" id="ref-for-element-count④">element count</a> or a <a data-link-type="dfn" href="#composite" id="ref-for-composite④">composite</a> that
 contains an <a data-link-type="dfn" href="#atomic-type" id="ref-for-atomic-type①③">atomic type</a>.</p>
        </ul>
      </ul>
@@ -6311,7 +6311,8 @@ the indeterminate value produced at runtime may be a NaN value.</p>
       <td>Evaluates to <var>e</var>.<br> Use parentheses to isolate an expression from the surrounding text. 
    </table>
    <h3 class="heading settled" data-level="7.5" id="type-constructor-expr"><span class="secno">7.5. </span><span class="content">Type Constructor Expressions</span><a class="self-link" href="#type-constructor-expr"></a></h3>
-   <p>A type constructor expression explicitly creates a value of a given <a data-link-type="dfn" href="#type-concrete" id="ref-for-type-concrete②⑥">concrete</a> <a data-link-type="dfn" href="#constructible" id="ref-for-constructible①⑤">constructible</a> type.</p>
+   <p>A type constructor expression explicitly creates a value of a given <a data-link-type="dfn" href="#type-concrete" id="ref-for-type-concrete②⑥">concrete</a> <a data-link-type="dfn" href="#constructible" id="ref-for-constructible①⑤">constructible</a> type.
+It is a <a data-link-type="dfn" href="#syntax-call_expression" id="ref-for-syntax-call_expression">call_expression</a> where the <a data-link-type="dfn" href="#syntax-callable" id="ref-for-syntax-callable">callable</a> item names a <a data-link-type="dfn" href="#type" id="ref-for-type②">type</a>.</p>
    <p>There are three kinds of constructor expressions:</p>
    <ul>
     <li data-md>
@@ -6322,6 +6323,9 @@ the indeterminate value produced at runtime may be a NaN value.</p>
      <p><a href="#conversion-expr">§ 7.5.3 Conversion Expressions</a></p>
    </ul>
    <p>In the following sections, when a type name precedes a parenthesized argument list, any user-defined or <a data-link-type="dfn" href="#predeclared" id="ref-for-predeclared⑤">predeclared</a> <a data-link-type="dfn" href="#type-alias" id="ref-for-type-alias⑦">alias</a> for that type can be used instead, with the same effect.</p>
+   <p>A type constructor can appear anywhere a <a data-link-type="dfn" href="#syntax-call_phrase" id="ref-for-syntax-call_phrase">call_phrase</a> can appear.
+In terms of evaluation order, <a href="#behaviors">behavior analysis</a>, and <a href="#uniformity">uniformity analysis</a>,
+a type constructor expression is treated like a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call②">function call</a>.</p>
    <div class="example wgsl global-scope no-marker" id="example-5a7cbbba">
     <a class="self-link" href="#example-5a7cbbba"></a>
     <div class="marker">EXAMPLE: Type constructor expressions using type aliases</div>
@@ -7737,7 +7741,7 @@ and the <var>e2</var>+1 most significant bits of <var>e1</var> do not have the s
        <p><a data-link-type="dfn" href="#component-wise" id="ref-for-component-wise④⑥">Component-wise</a> when <var>T</var> is a vector.</p>
    </table>
    <h3 class="heading settled" data-level="7.12" id="function-call-expr"><span class="secno">7.12. </span><span class="content">Function Call Expression</span><a class="self-link" href="#function-call-expr"></a></h3>
-   <p>A function call expression executes a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call②">function call</a> where the called
+   <p>A function call expression executes a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call③">function call</a> where the called
 function has a <a data-link-type="dfn" href="#return-type" id="ref-for-return-type②">return type</a>.
 If the called function does not return a value, a function call statement
 should be used instead.
@@ -7849,11 +7853,11 @@ See <a href="#function-call-statement">§ 8.5 Function Call Statement</a>.</p>
            is evaluated each time control flow reaches the declaration.<br> 
    </table>
    <h3 class="heading settled" data-level="7.18" id="expression-grammar"><span class="secno">7.18. </span><span class="content">Expression Grammar Summary</span><a class="self-link" href="#expression-grammar"></a></h3>
-   <p>When an identifier is used as a <a data-link-type="dfn" href="#syntax-callable" id="ref-for-syntax-callable">callable</a> item, it is one of:</p>
+   <p>When an identifier is used as a <a data-link-type="dfn" href="#syntax-callable" id="ref-for-syntax-callable①">callable</a> item, it is one of:</p>
    <ul>
     <li data-md>
      <p>The name of a <a data-link-type="dfn" href="#user-defined-function" id="ref-for-user-defined-function①">user-defined function</a> or <a data-link-type="dfn" href="#built-in-functions" id="ref-for-built-in-functions④">built-in function</a>,
-as part of a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call③">function call</a>.</p>
+as part of a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call④">function call</a>.</p>
     <li data-md>
      <p>The name of a <a href="#struct-types">structure type</a> or a <a href="#type-aliases">type alias</a>,
 as part of a <a href="#type-constructor-expr">constructor expression</a>.</p>
@@ -7862,19 +7866,19 @@ as part of a <a href="#type-constructor-expr">constructor expression</a>.</p>
    <div class="syntax">
      <dfn class="dfn-paneled" data-dfn-for="syntax" data-dfn-type="dfn" data-noexport id="syntax-primary_expression">primary_expression</dfn> : 
     <p>| <a data-link-type="dfn" href="#syntax-ident" id="ref-for-syntax-ident⑦">ident</a></p>
-    <p>| <a data-link-type="dfn" href="#syntax-call_expression" id="ref-for-syntax-call_expression">call_expression</a></p>
+    <p>| <a data-link-type="dfn" href="#syntax-call_expression" id="ref-for-syntax-call_expression①">call_expression</a></p>
     <p>| <a data-link-type="dfn" href="#syntax-literal" id="ref-for-syntax-literal">literal</a></p>
     <p>| <a data-link-type="dfn" href="#syntax-paren_expression" id="ref-for-syntax-paren_expression">paren_expression</a></p>
     <p>| <a data-link-type="dfn" href="#syntax_kw-bitcast" id="ref-for-syntax_kw-bitcast"><code>'bitcast'</code></a> <a data-link-type="dfn" href="#syntax_sym-less_than" id="ref-for-syntax_sym-less_than⑨"><code>'&lt;'</code></a> <a data-link-type="dfn" href="#syntax-type_specifier" id="ref-for-syntax-type_specifier①⓪">type_specifier</a> <a data-link-type="dfn" href="#syntax_sym-greater_than" id="ref-for-syntax_sym-greater_than⑨"><code>'>'</code></a> <a data-link-type="dfn" href="#syntax-paren_expression" id="ref-for-syntax-paren_expression①">paren_expression</a></p>
    </div>
    <div class="syntax">
      <dfn class="dfn-paneled" data-dfn-for="syntax" data-dfn-type="dfn" data-noexport id="syntax-call_expression">call_expression</dfn> : 
-    <p>| <a data-link-type="dfn" href="#syntax-call_phrase" id="ref-for-syntax-call_phrase">call_phrase</a></p>
+    <p>| <a data-link-type="dfn" href="#syntax-call_phrase" id="ref-for-syntax-call_phrase①">call_phrase</a></p>
    </div>
-    Note: The <a data-link-type="dfn" href="#syntax-call_expression" id="ref-for-syntax-call_expression①">call_expression</a> rule exists to ensure <a data-link-type="dfn" href="#type-checking" id="ref-for-type-checking①">type checking</a> applies to the call expression. 
+    Note: The <a data-link-type="dfn" href="#syntax-call_expression" id="ref-for-syntax-call_expression②">call_expression</a> rule exists to ensure <a data-link-type="dfn" href="#type-checking" id="ref-for-type-checking①">type checking</a> applies to the call expression. 
    <div class="syntax">
      <dfn class="dfn-paneled" data-dfn-for="syntax" data-dfn-type="dfn" data-noexport id="syntax-call_phrase">call_phrase</dfn> : 
-    <p>| <a data-link-type="dfn" href="#syntax-callable" id="ref-for-syntax-callable①">callable</a> <a data-link-type="dfn" href="#syntax-argument_expression_list" id="ref-for-syntax-argument_expression_list">argument_expression_list</a></p>
+    <p>| <a data-link-type="dfn" href="#syntax-callable" id="ref-for-syntax-callable②">callable</a> <a data-link-type="dfn" href="#syntax-argument_expression_list" id="ref-for-syntax-argument_expression_list">argument_expression_list</a></p>
    </div>
    <div class="syntax">
      <dfn class="dfn-paneled" data-dfn-for="syntax" data-dfn-type="dfn" data-noexport id="syntax-callable">callable</dfn> : 
@@ -8916,9 +8920,9 @@ the fragment will be thrown away.</p>
    <h3 class="heading settled" data-level="8.5" id="function-call-statement"><span class="secno">8.5. </span><span class="content">Function Call Statement</span><a class="self-link" href="#function-call-statement"></a></h3>
    <div class="syntax">
      <dfn class="dfn-paneled" data-dfn-for="syntax" data-dfn-type="dfn" data-noexport id="syntax-func_call_statement">func_call_statement</dfn> : 
-    <p>| <a data-link-type="dfn" href="#syntax-call_phrase" id="ref-for-syntax-call_phrase①">call_phrase</a></p>
+    <p>| <a data-link-type="dfn" href="#syntax-call_phrase" id="ref-for-syntax-call_phrase②">call_phrase</a></p>
    </div>
-   <p>A function call statement executes a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call④">function call</a>.</p>
+   <p>A function call statement executes a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call⑤">function call</a>.</p>
    <p class="note" role="note"><span class="marker">Note:</span> If the function <a data-link-type="dfn" href="#return-value" id="ref-for-return-value①">returns a value</a>, that value is ignored.</p>
    <h3 class="heading settled" data-level="8.6" id="const-assert-statement"><span class="secno">8.6. </span><span class="content">Const Assertion Statement</span><a class="self-link" href="#const-assert-statement"></a></h3>
    <p>A const assertion statement produces a <a data-link-type="dfn" href="#shader-creation-error" id="ref-for-shader-creation-error①⑤②">shader-creation error</a> if the
@@ -9371,7 +9375,7 @@ surrounded by parentheses.</p>
      <p>An optional <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="return-type">return type</dfn>, which may have attributes applied.</p>
     <li data-md>
      <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="function-body">function body</dfn>.
-This is the set of statements to be executed when the function is <a data-link-type="dfn" href="#function-call" id="ref-for-function-call⑤">called</a>.</p>
+This is the set of statements to be executed when the function is <a data-link-type="dfn" href="#function-call" id="ref-for-function-call⑥">called</a>.</p>
    </ul>
    <p>A function declaration <a data-link-type="dfn" href="#shader-creation-error" id="ref-for-shader-creation-error①⑤⑨">must</a> only occur at <a data-link-type="dfn" href="#module-scope" id="ref-for-module-scope②③">module scope</a>.
 A function name is <a data-link-type="dfn" href="#in-scope" id="ref-for-in-scope①⑤">in scope</a> for the entire program.</p>
@@ -9546,7 +9550,7 @@ fn foo() {
     <li data-md>
      <p>A <a data-link-type="dfn" href="#vertex" id="ref-for-vertex①">vertex</a> shader <a data-link-type="dfn" href="#shader-creation-error" id="ref-for-shader-creation-error①⑥⑥">must</a> return the <a data-link-type="dfn" href="#built-in-values-position" id="ref-for-built-in-values-position②">position</a> <a data-link-type="dfn" href="#built-in-output-value" id="ref-for-built-in-output-value①">built-in output value</a>.</p>
     <li data-md>
-     <p>An entry point <a data-link-type="dfn" href="#shader-creation-error" id="ref-for-shader-creation-error①⑥⑦">must</a> never be the target of a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call⑥">function call</a>.</p>
+     <p>An entry point <a data-link-type="dfn" href="#shader-creation-error" id="ref-for-shader-creation-error①⑥⑦">must</a> never be the target of a <a data-link-type="dfn" href="#function-call" id="ref-for-function-call⑦">function call</a>.</p>
     <li data-md>
      <p>If a function has a return type, it <a data-link-type="dfn" href="#shader-creation-error" id="ref-for-shader-creation-error①⑥⑧">must</a> be a <a data-link-type="dfn" href="#constructible" id="ref-for-constructible③⓪">constructible</a> type.</p>
     <li data-md>
@@ -10386,7 +10390,7 @@ shader that goes beyond the specified limits.</p>
       <td>Maximum number of members in a <a data-link-type="dfn" href="#structure" id="ref-for-structure②②">structure</a> type
       <td>16383 
      <tr>
-      <td>Maximum <a data-link-type="dfn" href="#nesting-depth" id="ref-for-nesting-depth">nesting depth</a> of a <a data-link-type="dfn" href="#composite" id="ref-for-composite④">composite</a> type
+      <td>Maximum <a data-link-type="dfn" href="#nesting-depth" id="ref-for-nesting-depth">nesting depth</a> of a <a data-link-type="dfn" href="#composite" id="ref-for-composite⑤">composite</a> type
       <td>255 
      <tr>
       <td>Maximum nesting depth of brace-enclosed statements in a function
@@ -10714,7 +10718,7 @@ and, potentially, its initial value.</p>
     <li data-md>
      <p>The variable’s <a data-link-type="dfn" href="#effective-value-type" id="ref-for-effective-value-type⑨">effective-value-type</a> is a <a data-link-type="dfn" href="#scalar" id="ref-for-scalar①⑤">scalar</a> type, or</p>
     <li data-md>
-     <p>the variable’s <a data-link-type="dfn" href="#effective-value-type" id="ref-for-effective-value-type①⓪">effective-value-type</a> is a <a data-link-type="dfn" href="#composite" id="ref-for-composite⑤">composite</a> type and each <a data-link-type="dfn" href="#components" id="ref-for-components①">component</a> of the composite is assigned a value.</p>
+     <p>the variable’s <a data-link-type="dfn" href="#effective-value-type" id="ref-for-effective-value-type①⓪">effective-value-type</a> is a <a data-link-type="dfn" href="#composite" id="ref-for-composite⑥">composite</a> type and each <a data-link-type="dfn" href="#components" id="ref-for-components①">component</a> of the composite is assigned a value.</p>
    </ul>
    <p>Otherwise, an assignment is a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="partial-assignment">partial assignment</dfn>.</p>
    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="full-reference">full reference</dfn> is an expression of <a data-link-type="dfn" href="#reference-type" id="ref-for-reference-type⑨">reference type</a> that is one of:</p>
@@ -11060,6 +11064,7 @@ being the same as input control flow node.</p>
      </ul>
    </ul>
    <p class="note" role="note"><span class="marker">Note:</span> Refer to <a href="#func-var-value-analysis">§ 13.2.5 Function-scope Variable Value Analysis</a> for the definition of <em>Vout</em>(<em>call</em>).</p>
+   <p>A <a href="#type-constructor-expr">type constructor expression</a> is analyzed as if it were a function call with the same arguments.</p>
    <p>Most built-in functions have tags of:</p>
    <ul>
     <li data-md>
@@ -11200,7 +11205,7 @@ after the function call.</p>
    </ul>
    <p>All other ones (see <a href="#builtin-values">§ 16 Built-in Values</a>) are considered non-uniform.</p>
    <p class="note" role="note"><span class="marker">Note:</span> An author should avoid grouping the uniform built-in values together with
-other non-uniform inputs because the analysis does not analyze the <a data-link-type="dfn" href="#components" id="ref-for-components②">components</a> of a <a data-link-type="dfn" href="#composite" id="ref-for-composite⑥">composite</a> type separately.</p>
+other non-uniform inputs because the analysis does not analyze the <a data-link-type="dfn" href="#components" id="ref-for-components②">components</a> of a <a data-link-type="dfn" href="#composite" id="ref-for-composite⑦">composite</a> type separately.</p>
    <table class="data">
     <caption>Uniformity rules for expressions in lvalue positions</caption>
     <thead>
@@ -11353,7 +11358,7 @@ if statement.</p>
    </div>
    <p class="note" role="note"><span class="marker">Note:</span> The subgraphs are only included in the example for ease of understanding.</p>
    <h5 class="heading settled" data-level="13.2.10.3" id="uniformity-example3"><span class="secno">13.2.10.3. </span><span class="content">Composite Value Analysis Limitations</span><a class="self-link" href="#uniformity-example3"></a></h5>
-   <p>One limitation of the uniformity analysis is that it does not track the <a data-link-type="dfn" href="#components" id="ref-for-components③">components</a> of a <a data-link-type="dfn" href="#composite" id="ref-for-composite⑦">composite</a> value independently.
+   <p>One limitation of the uniformity analysis is that it does not track the <a data-link-type="dfn" href="#components" id="ref-for-components③">components</a> of a <a data-link-type="dfn" href="#composite" id="ref-for-composite⑧">composite</a> value independently.
 That is, any non-uniform component value <a data-link-type="dfn" href="#behavioral-requirements" id="ref-for-behavioral-requirements①⑤">will</a> cause
 the analysis to treat the entire composite value as non-uniform.
 This example illustrates this issue and a potential workaround that shader
@@ -14527,7 +14532,7 @@ but a value may infer the type.</p>
      <tr>
       <td>Description 
       <td>Returns <a data-link-type="dfn" href="#truncate" id="ref-for-truncate②">truncate</a>(<code>e</code>), the nearest whole number whose absolute value
-    is less than or equal to <code>e</code>. <a data-link-type="dfn" href="#component-wise" id="ref-for-component-wise⑨⑥">Component-wise</a> when <code>T</code> is a vector. 
+    is less than or equal to the absolute value of <code>e</code>. <a data-link-type="dfn" href="#component-wise" id="ref-for-component-wise⑨⑥">Component-wise</a> when <code>T</code> is a vector. 
    </table>
    <h3 class="heading settled" data-level="17.4" id="derivative-builtin-functions"><span class="secno">17.4. </span><span class="content">Derivative Built-in Functions</span><a class="self-link" href="#derivative-builtin-functions"></a></h3>
    <p>See <a href="#derivatives">§ 13.5.2 Derivatives</a>.</p>
@@ -16842,7 +16847,7 @@ Use token definitions from the main part of the specification.</p>
     <p>| <code>'vec3'</code></p>
     <p>| <code>'vec4'</code></p>
    </div>
-   <h2 class="heading settled" id="text-wgsl-media-type"><span class="content">Appendix A: The <code>text/wgsl</code> media type</span><a class="self-link" href="#text-wgsl-media-type"></a></h2>
+   <h2 class="heading settled" id="text-wgsl-media-type"><span class="content">Appendix A: The <code>text/wgsl</code> Media Type</span><a class="self-link" href="#text-wgsl-media-type"></a></h2>
    <p>The Internet Assigned Numbers Authority (IANA) maintains a registry of media types, at <a data-link-type="biblio" href="#biblio-iana-media-types" title="Media Types">[IANA-MEDIA-TYPES]</a>.</p>
    <p>The following is the definition of the <code>text/wgsl</code> media type for WGSL programs.
 It has been registered at IANA,
@@ -17933,19 +17938,19 @@ registrations, it matches widespread industry conventions.</p>
   <aside class="dfn-panel" data-for="term-for-LB4">
    <a href="https://www.unicode.org/reports/tr14#LB4">https://www.unicode.org/reports/tr14#LB4</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-LB4">3.2. Blankspace and line breaks</a>
+    <li><a href="#ref-for-LB4">3.2. Blankspace and Line Breaks</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-LB5">
    <a href="https://www.unicode.org/reports/tr14#LB5">https://www.unicode.org/reports/tr14#LB5</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-LB5">3.2. Blankspace and line breaks</a>
+    <li><a href="#ref-for-LB5">3.2. Blankspace and Line Breaks</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-BreakingRules">
    <a href="https://www.unicode.org/reports/tr14#BreakingRules">https://www.unicode.org/reports/tr14#BreakingRules</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-BreakingRules">3.2. Blankspace and line breaks</a>
+    <li><a href="#ref-for-BreakingRules">3.2. Blankspace and Line Breaks</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-D1">
@@ -17963,7 +17968,7 @@ registrations, it matches widespread industry conventions.</p>
   <aside class="dfn-panel" data-for="term-for-unicode-standard-annex-31-for-unicode-version-1400">
    <a href="https://www.unicode.org/reports/tr31/tr31-35.html#unicode-standard-annex-31-for-unicode-version-1400">https://www.unicode.org/reports/tr31/tr31-35.html#unicode-standard-annex-31-for-unicode-version-1400</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-unicode-standard-annex-31-for-unicode-version-1400">3.2. Blankspace and line breaks</a> <a href="#ref-for-unicode-standard-annex-31-for-unicode-version-1400①">(2)</a>
+    <li><a href="#ref-for-unicode-standard-annex-31-for-unicode-version-1400">3.2. Blankspace and Line Breaks</a> <a href="#ref-for-unicode-standard-annex-31-for-unicode-version-1400①">(2)</a>
     <li><a href="#ref-for-unicode-standard-annex-31-for-unicode-version-1400②">3.7. Identifiers</a>
    </ul>
   </aside>
@@ -18694,13 +18699,13 @@ I’ve written what an NVIDIA GPU does.  See https://github.com/google/amber/pul
    <ul>
     <li><a href="#ref-for-blankspace">3. Textual Structure</a>
     <li><a href="#ref-for-blankspace①">3.1. Parsing</a>
-    <li><a href="#ref-for-blankspace②">3.2. Blankspace and line breaks</a>
+    <li><a href="#ref-for-blankspace②">3.2. Blankspace and Line Breaks</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="line-break">
    <b><a href="#line-break">#line-break</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-line-break">3.2. Blankspace and line breaks</a>
+    <li><a href="#ref-for-line-break">3.2. Blankspace and Line Breaks</a>
     <li><a href="#ref-for-line-break①">3.3. Comments</a>
    </ul>
   </aside>
@@ -19162,6 +19167,7 @@ I’ve written what an NVIDIA GPU does.  See https://github.com/google/amber/pul
    <ul>
     <li><a href="#ref-for-type">4. Declaration and Scope</a>
     <li><a href="#ref-for-type①">5.4. Memory Views</a>
+    <li><a href="#ref-for-type②">7.5. Type Constructor Expressions</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="expression">
@@ -19853,11 +19859,12 @@ I’ve written what an NVIDIA GPU does.  See https://github.com/google/amber/pul
    <ul>
     <li><a href="#ref-for-composite">1.1. Technical Overview</a>
     <li><a href="#ref-for-composite①">5.2. Plain Types</a>
-    <li><a href="#ref-for-composite②">6.3. var Declarations</a> <a href="#ref-for-composite③">(2)</a>
-    <li><a href="#ref-for-composite④">12.1. Limits</a>
-    <li><a href="#ref-for-composite⑤">13.2.5. Function-scope Variable Value Analysis</a>
-    <li><a href="#ref-for-composite⑥">13.2.8. Uniformity Rules for Expressions</a>
-    <li><a href="#ref-for-composite⑦">13.2.10.3. Composite Value Analysis Limitations</a>
+    <li><a href="#ref-for-composite②">5.3.1. Memory Locations</a>
+    <li><a href="#ref-for-composite③">6.3. var Declarations</a> <a href="#ref-for-composite④">(2)</a>
+    <li><a href="#ref-for-composite⑤">12.1. Limits</a>
+    <li><a href="#ref-for-composite⑥">13.2.5. Function-scope Variable Value Analysis</a>
+    <li><a href="#ref-for-composite⑦">13.2.8. Uniformity Rules for Expressions</a>
+    <li><a href="#ref-for-composite⑧">13.2.10.3. Composite Value Analysis Limitations</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="components">
@@ -20880,20 +20887,23 @@ I’ve written what an NVIDIA GPU does.  See https://github.com/google/amber/pul
   <aside class="dfn-panel" data-for="syntax-call_expression">
    <b><a href="#syntax-call_expression">#syntax-call_expression</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-syntax-call_expression">7.18. Expression Grammar Summary</a> <a href="#ref-for-syntax-call_expression①">(2)</a>
+    <li><a href="#ref-for-syntax-call_expression">7.5. Type Constructor Expressions</a>
+    <li><a href="#ref-for-syntax-call_expression①">7.18. Expression Grammar Summary</a> <a href="#ref-for-syntax-call_expression②">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="syntax-call_phrase">
    <b><a href="#syntax-call_phrase">#syntax-call_phrase</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-syntax-call_phrase">7.18. Expression Grammar Summary</a>
-    <li><a href="#ref-for-syntax-call_phrase①">8.5. Function Call Statement</a>
+    <li><a href="#ref-for-syntax-call_phrase">7.5. Type Constructor Expressions</a>
+    <li><a href="#ref-for-syntax-call_phrase①">7.18. Expression Grammar Summary</a>
+    <li><a href="#ref-for-syntax-call_phrase②">8.5. Function Call Statement</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="syntax-callable">
    <b><a href="#syntax-callable">#syntax-callable</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-syntax-callable">7.18. Expression Grammar Summary</a> <a href="#ref-for-syntax-callable①">(2)</a>
+    <li><a href="#ref-for-syntax-callable">7.5. Type Constructor Expressions</a>
+    <li><a href="#ref-for-syntax-callable①">7.18. Expression Grammar Summary</a> <a href="#ref-for-syntax-callable②">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="syntax-paren_expression">
@@ -21540,11 +21550,12 @@ I’ve written what an NVIDIA GPU does.  See https://github.com/google/amber/pul
    <ul>
     <li><a href="#ref-for-function-call">6.2. Value Declarations</a>
     <li><a href="#ref-for-function-call①">6.3. var Declarations</a>
-    <li><a href="#ref-for-function-call②">7.12. Function Call Expression</a>
-    <li><a href="#ref-for-function-call③">7.18. Expression Grammar Summary</a>
-    <li><a href="#ref-for-function-call④">8.5. Function Call Statement</a>
-    <li><a href="#ref-for-function-call⑤">9.1. Declaring a User-defined Function</a>
-    <li><a href="#ref-for-function-call⑥">9.4. Restrictions on Functions</a>
+    <li><a href="#ref-for-function-call②">7.5. Type Constructor Expressions</a>
+    <li><a href="#ref-for-function-call③">7.12. Function Call Expression</a>
+    <li><a href="#ref-for-function-call④">7.18. Expression Grammar Summary</a>
+    <li><a href="#ref-for-function-call⑤">8.5. Function Call Statement</a>
+    <li><a href="#ref-for-function-call⑥">9.1. Declaring a User-defined Function</a>
+    <li><a href="#ref-for-function-call⑦">9.4. Restrictions on Functions</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="calling-function">
