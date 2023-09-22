@@ -36,6 +36,7 @@ $(TREESITTER_GRAMMAR_INPUT) $(TREESITTER_PARSER): index.bs scanner.cc extract-gr
 		source ../tools/custom-action/dependency-versions.sh && python3 ./extract-grammar.py --spec index.bs --scanner scanner.cc --tree-sitter-dir grammar --flow xb; \
 		if nm -gD grammar/build/wgsl.so | grep -q tree_sitter_wgsl; then \
 			echo "Symbol tree_sitter_wgsl found!"; \
+			sync; \
 			break; \
 		else \
 			echo "Error: tree_sitter_wgsl symbol not found in grammar/build/wgsl.so, retrying... ($$((count + 1)) / 16)"; \
