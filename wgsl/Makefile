@@ -31,22 +31,13 @@ TREESITTER_PARSER := grammar/build/wgsl.so
 
 # Extract WGSL grammar from the spec, validate it by building a Treesitter parser from it.
 $(TREESITTER_GRAMMAR_INPUT) $(TREESITTER_PARSER): index.bs scanner.cc extract-grammar.py
-	@count=0; \
-	while [ $$count -lt 16 ]; do \
-		source ../tools/custom-action/dependency-versions.sh && python3 ./extract-grammar.py --spec index.bs --scanner scanner.cc --tree-sitter-dir grammar --flow xb; \
-		if nm -gD grammar/build/wgsl.so | grep -q tree_sitter_wgsl; then \
-			echo "Symbol tree_sitter_wgsl found!"; \
-			break; \
-		else \
-			echo "Error: tree_sitter_wgsl symbol not found in grammar/build/wgsl.so, retrying... ($$((count + 1)) / 16)"; \
-			rm -rf grammar/build; \
-			count=$$((count + 1)); \
-			if [ $$count -eq 16 ]; then \
-				echo "Error: tree_sitter_wgsl symbol still not found after 16 attempts" >&2; \
-				exit 1; \
-			fi; \
-		fi; \
-	done;
+	source ../tools/custom-action/dependency-versions.sh && python3 ./extract-grammar.py --spec index.bs --scanner scanner.cc --tree-sitter-dir grammar --flow xb; \
+	if ! nm -gD grammar/build/wgsl.so | grep -q tree_sitter_wgsl; then \
+		echo "Error: tree_sitter_wgsl symbol does not exist" >&2; \
+		exit 1; \
+	else \
+		echo "Symbol tree_sitter_wgsl exists"; \
+	fi;
 
 .PHONY: validate-examples
 # Use Treesitter to parse many code examples in the spec.
