@@ -61,7 +61,7 @@ tspath_tests: TSPath.py
 .PHONY: unit_tests
 # Use Treesitter to parse code samples
 unit_tests: $(TREESITTER_PARSER) wgsl_unit_tests.py
-	python3 wgsl_unit_tests.py --parser $(TREESITTER_PARSER)
+	LD_DEBUG=libs,symbols,bindings python3 wgsl_unit_tests.py --parser $(TREESITTER_PARSER)
 
 # The grammar in JSON form, emitted by Treesitter.
 WGSL_GRAMMAR=grammar/src/grammar.json
