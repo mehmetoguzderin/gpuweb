@@ -12,7 +12,6 @@ import sys
 import string
 import shutil
 
-
 import wgsl_unit_tests
 
 from distutils.ccompiler import new_compiler
