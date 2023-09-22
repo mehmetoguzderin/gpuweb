@@ -522,7 +522,7 @@ severity_control_name :
 ;
 
 swizzle_name :
-  /[rgbaq]/
+  /[rgba]/
 | /[rgba][rgba]/
 | /[rgba][rgba][rgba]/
 | /[rgba][rgba][rgba][rgba]/
