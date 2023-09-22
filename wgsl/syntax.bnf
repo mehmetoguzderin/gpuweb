@@ -8,6 +8,7 @@ translation_unit :
   global_directive * global_decl *
 ;
 
+
 global_directive :
   diagnostic_directive
 | enable_directive
