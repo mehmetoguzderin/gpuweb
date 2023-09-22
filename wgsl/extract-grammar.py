@@ -2,6 +2,7 @@
 
 from datetime import date
 from string import Template
+from tempfile import TemporaryDirectory
 
 import argparse
 import difflib
@@ -1182,8 +1183,51 @@ def flow_build(options):
     # subprocess.run(["npx", "tree-sitter-cli@" + value_from_dotenv("NPM_TREE_SITTER_CLI_VERSION"), "build-wasm", "--docker"],
     #                cwd=options.grammar_dir, check=True)
 
+    def build_library(output_path, input_files):
+        # The py-tree-sitter build_library method with C++17 flags
+        """
+        Build a dynamic library at the given path, based on the parser
+        repositories at the given paths.
 
-    def build_library(output_file, input_files):
+        Returns `True` if the dynamic library was compiled and `False` if
+        the library already existed and was modified more recently than
+        any of the source files.
+        """
+
+        cpp = False
+        source_paths = []
+        for input_file in input_files:
+            source_paths.append(input_file)
+            if input_file.endswith(".cc"):
+                cpp = True
+
+        compiler = new_compiler()
+        if isinstance(compiler, UnixCCompiler):
+            compiler.set_executables(compiler_cxx="c++")
+
+        with TemporaryDirectory(suffix="tree_sitter_language") as out_dir:
+            object_paths = []
+            for source_path in source_paths:
+                flags = ["-fPIC"]
+                if source_path.endswith(".c"):
+                    flags.append("-std=c99")
+                else:
+                    flags.append("-std=c++17")
+                object_paths.append(
+                    compiler.compile(
+                        [source_path],
+                        output_dir=out_dir,
+                        include_dirs=[os.path.dirname(source_path)],
+                        extra_preargs=flags,
+                    )[0]
+                )
+            compiler.link_shared_object(
+                object_paths,
+                output_path,
+                target_lang="c++" if cpp else "c",
+            )
+
+    def build_library_ex(output_file, input_files):
         # The py-tree-sitter build_library method wasn't compiling with C++17 flags,
         # so invoke the compile ourselves.
         compiler = new_compiler()
