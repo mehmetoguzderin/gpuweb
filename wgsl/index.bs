@@ -693,6 +693,7 @@ The <dfn dfn-for="diagnostic">severity</dfn> of a diagnostic is one of the follo
 : <dfn dfn-for="severity" noexport>off</a>
 :: The diagnostic is disabled. It will not be conveyed to the application.
 
+
 The name of a [=diagnostic/triggering rule=] is either:
 * a [=syntax/diagnostic_name_token=], or
 * two [=syntax/diagnostic_name_token=] tokens, separated by a period `'.'` (U+002E).
