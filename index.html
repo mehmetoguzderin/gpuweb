@@ -1111,13 +1111,13 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebGPU</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-09-11">11 September 2024</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-09-12">12 September 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
-      <dd><a class="u-url" href="https://gpuweb.github.io/gpuweb/">https://gpuweb.github.io/gpuweb/</a><br><a href="https://github.com/gpuweb/gpuweb/blob/9ca9ba2f9a5ee7a524247e61f95e8565e5feafeb/spec/index.bs">https://github.com/gpuweb/gpuweb/blob/9ca9ba2f9a5ee7a524247e61f95e8565e5feafeb/spec/index.bs</a>
+      <dd><a class="u-url" href="https://gpuweb.github.io/gpuweb/">https://gpuweb.github.io/gpuweb/</a><br><a href="https://github.com/gpuweb/gpuweb/blob/40280987cb64eb9472e256f8fc19e101a107bf6f/spec/index.bs">https://github.com/gpuweb/gpuweb/blob/40280987cb64eb9472e256f8fc19e101a107bf6f/spec/index.bs</a>
       <dt>Latest published version:
       <dd><a href="https://www.w3.org/TR/webgpu/">https://www.w3.org/TR/webgpu/</a>
       <dt>Feedback:
@@ -3521,9 +3521,14 @@ chooses according to the provided options.</p>
         <a data-link-type="dfn" href="#device-timeline" id="ref-for-device-timeline②④">Device timeline</a> <var>initialization steps</var>: 
        <ol>
         <li data-md>
-         <p>Let <var>adapter</var> be <code>null</code>.</p>
-        <li data-md>
-         <p>If the user agent chooses to return an adapter:</p>
+         <p>All of the requirements in the following steps <var>must</var> be met.</p>
+         <div class="validusage">
+          <ol>
+           <li data-md>
+            <p><var>options</var>.<code class="idl"><a data-link-type="idl" href="#dom-gpurequestadapteroptions-featurelevel" id="ref-for-dom-gpurequestadapteroptions-featurelevel">featureLevel</a></code> <var>must</var> be <code>undefined</code>.</p>
+          </ol>
+         </div>
+         <p>If they are met <strong>and</strong> the user agent chooses to return an adapter:</p>
          <ol>
           <li data-md>
            <p>Set <var>adapter</var> to an <a data-link-type="dfn" href="#adapter" id="ref-for-adapter②⑧">adapter</a> chosen according to
@@ -3533,6 +3538,11 @@ adhering to <a href="#adapter-capability-guarantees">§ 4.2.1 Adapter Capabili
 defined in <a href="#limits">§ 3.6.2 Limits</a>.</p>
           <li data-md>
            <p>If <var>adapter</var> meets the criteria of a <a data-link-type="dfn" href="#fallback-adapter" id="ref-for-fallback-adapter②">fallback adapter</a> set <var>adapter</var>.<code class="idl"><a data-link-type="idl" href="#dom-adapter-fallback-slot" id="ref-for-dom-adapter-fallback-slot">[[fallback]]</a></code> to <code>true</code>.</p>
+         </ol>
+         <p>Otherwise:</p>
+         <ol>
+          <li data-md>
+           <p>Let <var>adapter</var> be <code>null</code>.</p>
          </ol>
         <li data-md>
          <p>Issue the subsequent steps on <var data-timeline="content">contentTimeline</var>.</p>
@@ -3657,6 +3667,7 @@ other limits.</p>
    <p><dfn class="dfn-paneled idl-code" data-dfn-type="dictionary" data-export id="dictdef-gpurequestadapteroptions"><code>GPURequestAdapterOptions</code></dfn> provides hints to the user agent indicating what
 configuration is suitable for the application.</p>
 <pre class="idl highlight def"><c- b>dictionary</c-> <a class="idl-code" data-link-type="dictionary" href="#dictdef-gpurequestadapteroptions" id="ref-for-dictdef-gpurequestadapteroptions②"><c- g>GPURequestAdapterOptions</c-></a> {
+    <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-any" id="ref-for-idl-any"><c- b>any</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="GPURequestAdapterOptions" data-dfn-type="dict-member" data-export data-type="any" id="dom-gpurequestadapteroptions-featurelevel"><code><c- g>featureLevel</c-></code></dfn>;
     <a data-link-type="idl-name" href="#enumdef-gpupowerpreference" id="ref-for-enumdef-gpupowerpreference"><c- n>GPUPowerPreference</c-></a> <a class="idl-code" data-link-type="dict-member" data-type="GPUPowerPreference" href="#dom-gpurequestadapteroptions-powerpreference" id="ref-for-dom-gpurequestadapteroptions-powerpreference"><c- g>powerPreference</c-></a>;
     <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean" id="ref-for-idl-boolean④"><c- b>boolean</c-></a> <a class="idl-code" data-default="false" data-link-type="dict-member" data-type="boolean" href="#dom-gpurequestadapteroptions-forcefallbackadapter" id="ref-for-dom-gpurequestadapteroptions-forcefallbackadapter"><c- g>forceFallbackAdapter</c-></a> = <c- b>false</c->;
 };
@@ -9141,7 +9152,7 @@ not <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#map-exists" id=
 and <var>descriptor</var>.<code class="idl"><a data-link-type="idl" href="#dom-gpupipelinedescriptorbase-layout" id="ref-for-dom-gpupipelinedescriptorbase-layout⑤">layout</a></code> otherwise.</p>
         <li data-md>
          <p>All of the requirements in the following steps <var>must</var> be met.
-If any are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate①⑤">invalidate</a> <var>pipeline</var> and return.</p>
+If any are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error①⑨">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate①⑤">invalidate</a> <var>pipeline</var>, and return.</p>
          <div class="validusage">
           <ol>
            <li data-md>
@@ -9291,7 +9302,7 @@ issue the following steps on <var>contentTimeline</var>, and return.</p>
           </ol>
          </div>
         <li data-md>
-         <p>If <var>pipeline</var> is <a data-link-type="abstract-op" href="#abstract-opdef-invalid" id="ref-for-abstract-opdef-invalid②⓪">invalid</a> and <var>error</var> is a <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error①⑨">validation error</a>,
+         <p>If <var>pipeline</var> is <a data-link-type="abstract-op" href="#abstract-opdef-invalid" id="ref-for-abstract-opdef-invalid②⓪">invalid</a> and <var>error</var> is a <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⓪">validation error</a>,
 issue the following steps on <var>contentTimeline</var>, and return.</p>
          <div data-timeline="content">
            <a data-link-type="dfn" href="#content-timeline" id="ref-for-content-timeline⑥⑧">Content timeline</a> steps: 
@@ -11336,7 +11347,7 @@ The encoder becomes "<a data-link-type="dfn" href="#encoder-state-open" id="ref-
     <dt data-md>"<dfn class="dfn-paneled" data-dfn-for="encoder state" data-dfn-type="dfn" data-noexport id="encoder-state-ended">ended</dfn>"
     <dd data-md>
      <p>The encoder has been ended and new commands can no longer be encoded.</p>
-     <p>Any command issued in this state will <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⓪">generate a validation error</a>.</p>
+     <p>Any command issued in this state will <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②①">generate a validation error</a>.</p>
    </dl>
    <div class="validusage algorithm" data-algorithm="Validate the encoder state" data-timeline="device">
      To <dfn class="dfn-paneled" data-dfn-type="abstract-op" data-export id="abstract-opdef-validate-the-encoder-state">Validate the encoder state</dfn> of <code class="idl"><a data-link-type="idl" href="#gpucommandsmixin" id="ref-for-gpucommandsmixin③">GPUCommandsMixin</a></code> <var>encoder</var> run the <br> following <a data-link-type="dfn" href="#device-timeline" id="ref-for-device-timeline⑨⑦">device timeline</a> steps: 
@@ -11352,7 +11363,7 @@ The encoder becomes "<a data-link-type="dfn" href="#encoder-state-open" id="ref-
         <p><a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate①⑨">Invalidate</a> <var>encoder</var> and return <code>false</code>.</p>
        <dt data-md>"<a data-link-type="dfn" href="#encoder-state-ended" id="ref-for-encoder-state-ended">ended</a>"
        <dd data-md>
-        <p><a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②①">Generate a validation error</a>, and return <code>false</code>.</p>
+        <p><a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②②">Generate a validation error</a>, and return <code>false</code>.</p>
       </dl>
     </ol>
    </div>
@@ -11460,7 +11471,7 @@ The encoder becomes "<a data-link-type="dfn" href="#encoder-state-open" id="ref-
         <a data-link-type="dfn" href="#device-timeline" id="ref-for-device-timeline①⓪⓪">Device timeline</a> <var>initialization steps</var>: 
        <ol>
         <li data-md>
-         <p>If any of the following conditions are unsatisfied <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②②">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate②⓪">invalidate</a> <var>e</var> and return.</p>
+         <p>If any of the following conditions are unsatisfied <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②③">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate②⓪">invalidate</a> <var>e</var> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -12488,7 +12499,7 @@ command encoder can no longer be used.</p>
          <p>If <var>validationSucceeded</var> is <code>false</code>, then:</p>
          <ol>
           <li data-md>
-           <p><a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②③">Generate a validation error</a>.</p>
+           <p><a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②④">Generate a validation error</a>.</p>
           <li data-md>
            <p>Return an <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate③①">invalidated</a> <code class="idl"><a data-link-type="idl" href="#gpucommandbuffer" id="ref-for-gpucommandbuffer①⑨">GPUCommandBuffer</a></code>.</p>
          </ol>
@@ -13317,7 +13328,7 @@ called the compute pass encoder can no longer be used.</p>
         <li data-md>
          <p>Let <var>parentEncoder</var> be <var>this</var>.<code class="idl"><a data-link-type="idl" href="#dom-gpurenderpassencoder-command_encoder-slot" id="ref-for-dom-gpurenderpassencoder-command_encoder-slot">[[command_encoder]]</a></code>.</p>
         <li data-md>
-         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②④">generate a validation error</a> and return.</p>
+         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑤">generate a validation error</a> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -14013,7 +14024,7 @@ called the render pass encoder can no longer be used.</p>
         <li data-md>
          <p>Let <var>parentEncoder</var> be <var>this</var>.<code class="idl"><a data-link-type="idl" href="#dom-gpurenderpassencoder-command_encoder-slot" id="ref-for-dom-gpurenderpassencoder-command_encoder-slot①">[[command_encoder]]</a></code>.</p>
         <li data-md>
-         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑤">generate a validation error</a> and return.</p>
+         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑥">generate a validation error</a> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -15548,7 +15559,7 @@ changing.</p>
         <a data-link-type="dfn" href="#device-timeline" id="ref-for-device-timeline①⑦⑦">Device timeline</a> <var>initialization steps</var>: 
        <ol>
         <li data-md>
-         <p>If any of the following conditions are unsatisfied <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑥">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate⑤③">invalidate</a> <var>e</var> and return.</p>
+         <p>If any of the following conditions are unsatisfied <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑦">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate⑤③">invalidate</a> <var>e</var> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -15673,7 +15684,7 @@ in.</p>
          <p>If <var>validationSucceeded</var> is <code>false</code>, then:</p>
          <ol>
           <li data-md>
-           <p><a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑦">Generate a validation error</a>.</p>
+           <p><a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑧">Generate a validation error</a>.</p>
           <li data-md>
            <p>Return an <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate⑤④">invalidated</a> <code class="idl"><a data-link-type="idl" href="#gpurenderbundle" id="ref-for-gpurenderbundle①⑧">GPURenderBundle</a></code>.</p>
          </ol>
@@ -15809,7 +15820,7 @@ an offset of <var>dataOffset</var> elements.</p>
         <a data-link-type="dfn" href="#device-timeline" id="ref-for-device-timeline①⑧①">Device timeline</a> steps: 
        <ol>
         <li data-md>
-         <p>If any of the following conditions are unsatisfied, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑧">generate a validation error</a> and return.</p>
+         <p>If any of the following conditions are unsatisfied, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑨">generate a validation error</a> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -15902,7 +15913,7 @@ Implementations should optimize by copying only the necessary bytes.</p>
         <li data-md>
          <p>Let <var>dataLength</var> be <var>dataBytes</var>.<a data-link-type="dfn" href="https://infra.spec.whatwg.org/#byte-sequence-length" id="ref-for-byte-sequence-length">length</a>.</p>
         <li data-md>
-         <p>If any of the following conditions are unsatisfied, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error②⑨">generate a validation error</a> and return.</p>
+         <p>If any of the following conditions are unsatisfied, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③⓪">generate a validation error</a> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -16054,7 +16065,7 @@ throw a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.what
         <li data-md>
          <p>Let <var>texture</var> be <var>destination</var>.<code class="idl"><a data-link-type="idl" href="#dom-gpuimagecopytexture-texture" id="ref-for-dom-gpuimagecopytexture-texture②⑨">texture</a></code>.</p>
         <li data-md>
-         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③⓪">generate a validation error</a> and return.</p>
+         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③①">generate a validation error</a> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -16174,7 +16185,7 @@ the <a data-link-type="dfn" href="#texel-block-height" id="ref-for-texel-block-h
         <a data-link-type="dfn" href="#device-timeline" id="ref-for-device-timeline①⑧⑦">Device timeline</a> steps: 
        <ol>
         <li data-md>
-         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③①">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate⑤⑤">invalidate</a> each <code class="idl"><a data-link-type="idl" href="#gpucommandbuffer" id="ref-for-gpucommandbuffer②④">GPUCommandBuffer</a></code> in <var>commandBuffers</var> and return.</p>
+         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③②">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate⑤⑤">invalidate</a> each <code class="idl"><a data-link-type="idl" href="#gpucommandbuffer" id="ref-for-gpucommandbuffer②④">GPUCommandBuffer</a></code> in <var>commandBuffers</var> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -16360,7 +16371,7 @@ but <code class="idl"><a data-link-type="idl" href="#timestamp-query" id="ref-fo
         <a data-link-type="dfn" href="#device-timeline" id="ref-for-device-timeline①⑨①">Device timeline</a> <var>initialization steps</var>: 
        <ol>
         <li data-md>
-         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③②">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate⑤⑦">invalidate</a> <var>q</var> and return.</p>
+         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③③">generate a validation error</a>, <a data-link-type="abstract-op" href="#abstract-opdef-invalidate" id="ref-for-abstract-opdef-invalidate⑤⑦">invalidate</a> <var>q</var> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -16623,7 +16634,7 @@ This clears the drawing buffer to transparent black (in <a data-link-type="abstr
         <a data-link-type="dfn" href="#device-timeline" id="ref-for-device-timeline①⑨⑦">Device timeline</a> steps: 
        <ol>
         <li data-md>
-         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③③">generate a validation error</a> and return.</p>
+         <p>If any of the following requirements are unmet, <a data-link-type="abstract-op" href="#abstract-opdef-generate-a-validation-error" id="ref-for-abstract-opdef-generate-a-validation-error③④">generate a validation error</a> and return.</p>
          <div class="validusage">
           <ul>
            <li data-md>
@@ -20314,6 +20325,7 @@ for (const dataLink of dataLinks) {
    <li><a href="#dom-adapter-fallback-slot">[[fallback]]</a><span>, in § 3.5.1</span>
    <li><a href="#fallback-adapter">fallback adapter</a><span>, in § 3.5.1</span>
    <li><a href="#feature">feature</a><span>, in § 3.6.1</span>
+   <li><a href="#dom-gpurequestadapteroptions-featurelevel">featureLevel</a><span>, in § 4.2.2</span>
    <li>
     [[features]]
     <ul>
@@ -21669,6 +21681,7 @@ for (const dataLink of dataLinks) {
      <li><span class="dfn-paneled" id="13d0450b">Uint32Array</span>
      <li><span class="dfn-paneled" id="dacde8b5">a new promise</span>
      <li><span class="dfn-paneled" id="d0b4a948">a promise rejected with</span>
+     <li><span class="dfn-paneled" id="6c6b1005">any</span>
      <li><span class="dfn-paneled" id="5372cca8">boolean</span>
      <li><span class="dfn-paneled" id="ae4bc361">converted to an ecmascript value</span>
      <li><span class="dfn-paneled" id="cadf5fe9">converted to an idl value</span>
@@ -21868,6 +21881,7 @@ for (const dataLink of dataLinks) {
 };
 
 <c- b>dictionary</c-> <a class="idl-code" data-link-type="dictionary" href="#dictdef-gpurequestadapteroptions"><c- g>GPURequestAdapterOptions</c-></a> {
+    <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-any"><c- b>any</c-></a> <a data-type="any" href="#dom-gpurequestadapteroptions-featurelevel"><code><c- g>featureLevel</c-></code></a>;
     <a data-link-type="idl-name" href="#enumdef-gpupowerpreference"><c- n>GPUPowerPreference</c-></a> <a class="idl-code" data-link-type="dict-member" data-type="GPUPowerPreference" href="#dom-gpurequestadapteroptions-powerpreference"><c- g>powerPreference</c-></a>;
     <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean"><c- b>boolean</c-></a> <a class="idl-code" data-default="false" data-link-type="dict-member" data-type="boolean" href="#dom-gpurequestadapteroptions-forcefallbackadapter"><c- g>forceFallbackAdapter</c-></a> = <c- b>false</c->;
 };
@@ -23410,6 +23424,7 @@ let dfnPanelData = {
 "6b815fdd": {"dfnID":"6b815fdd","dfnText":"is empty","external":true,"refSections":[{"refs":[{"id":"ref-for-list-is-empty"}],"title":"13.7. Finalization"},{"refs":[{"id":"ref-for-list-is-empty\u2460"}],"title":"15. Debug Markers"},{"refs":[{"id":"ref-for-list-is-empty\u2461"}],"title":"16.1.3. Finalization"},{"refs":[{"id":"ref-for-list-is-empty\u2462"}],"title":"17.1.2. Finalization"},{"refs":[{"id":"ref-for-list-is-empty\u2463"}],"title":"18.1.3. Finalization"}],"url":"https://infra.spec.whatwg.org/#list-is-empty"},
 "6bf333ad": {"dfnID":"6bf333ad","dfnText":"close()","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-videoframe-close"},{"id":"ref-for-dom-videoframe-close\u2460"}],"title":"6.4.1. Importing External Textures"}],"url":"https://w3c.github.io/webcodecs/#dom-videoframe-close"},
 "6bff5e92": {"dfnID":"6bff5e92","dfnText":"localizable text","external":true,"refSections":[{"refs":[{"id":"ref-for-dfn-localizable-text"}],"title":"9.1.2. Shader Module Compilation Information"},{"refs":[{"id":"ref-for-dfn-localizable-text\u2460"}],"title":"22.2. GPUError\n\n"}],"url":"https://www.w3.org/TR/i18n-glossary/#dfn-localizable-text"},
+"6c6b1005": {"dfnID":"6c6b1005","dfnText":"any","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-any"}],"title":"4.2.2. Adapter Selection"}],"url":"https://webidl.spec.whatwg.org/#idl-any"},
 "6d3fe2ae": {"dfnID":"6d3fe2ae","dfnText":"data block","external":true,"refSections":[{"refs":[{"id":"ref-for-sec-data-blocks"}],"title":"5.1. GPUBuffer\n\n"}],"url":"https://tc39.es/ecma262/#sec-data-blocks"},
 "6f32b03e": {"dfnID":"6f32b03e","dfnText":"getContext(contextId, options) (for HTMLCanvasElement)","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-canvas-getcontext"},{"id":"ref-for-dom-canvas-getcontext\u2460"},{"id":"ref-for-dom-canvas-getcontext\u2461"}],"title":"21.1. HTMLCanvasElement.getContext()"}],"url":"https://html.spec.whatwg.org/multipage/canvas.html#dom-canvas-getcontext"},
 "6ff766a1": {"dfnID":"6ff766a1","dfnText":"frag_depth","external":true,"refSections":[{"refs":[{"id":"ref-for-built-in-values-frag_depth"}],"title":"10.3.1. Render Pipeline Creation"}],"url":"https://gpuweb.github.io/gpuweb/wgsl/#built-in-values-frag_depth"},
@@ -23488,7 +23503,7 @@ let dfnPanelData = {
 "abstract-opdef-expire": {"dfnID":"abstract-opdef-expire","dfnText":"expire","external":false,"refSections":[{"refs":[{"id":"ref-for-abstract-opdef-expire"}],"title":"3.5.1. Adapters"},{"refs":[{"id":"ref-for-abstract-opdef-expire\u2460"},{"id":"ref-for-abstract-opdef-expire\u2461"},{"id":"ref-for-abstract-opdef-expire\u2462"}],"title":"4.2. GPU"},{"refs":[{"id":"ref-for-abstract-opdef-expire\u2463"}],"title":"4.3. GPUAdapter\n\n"}],"url":"#abstract-opdef-expire"},
 "abstract-opdef-expire-the-current-texture": {"dfnID":"abstract-opdef-expire-the-current-texture","dfnText":"Expire the current texture","external":false,"refSections":[{"refs":[{"id":"ref-for-abstract-opdef-expire-the-current-texture"},{"id":"ref-for-abstract-opdef-expire-the-current-texture\u2460"},{"id":"ref-for-abstract-opdef-expire-the-current-texture\u2461"},{"id":"ref-for-abstract-opdef-expire-the-current-texture\u2462"}],"title":"21.2. GPUCanvasContext"},{"refs":[{"id":"ref-for-abstract-opdef-expire-the-current-texture\u2463"}],"title":"21.3. HTML Specification Hooks"}],"url":"#abstract-opdef-expire-the-current-texture"},
 "abstract-opdef-fetch-index": {"dfnID":"abstract-opdef-fetch-index","dfnText":"fetch index","external":false,"refSections":[{"refs":[{"id":"ref-for-abstract-opdef-fetch-index"}],"title":"23.2.1. Index Resolution"}],"url":"#abstract-opdef-fetch-index"},
-"abstract-opdef-generate-a-validation-error": {"dfnID":"abstract-opdef-generate-a-validation-error","dfnText":"generate a\n    validation error","external":false,"refSections":[{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461"}],"title":"3.6.1. Features"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462"}],"title":"5.1.3. Buffer Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2463"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2464"}],"title":"5.2. Buffer Mapping"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2465"}],"title":"6.1.3. Texture Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2466"}],"title":"6.2.1. Texture View Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2467"}],"title":"6.4.1. Importing External Textures"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2468"}],"title":"7.1.2. Sampler Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u24ea"}],"title":"8.1.1. Bind Group Layout Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2460"}],"title":"8.2.1. Bind Group Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2461"}],"title":"8.3.1. Pipeline Layout Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2462"}],"title":"9.1.1. Shader Module Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2463"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2464"}],"title":"10. Pipelines"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2465"}],"title":"10.1. Base pipelines"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2466"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2467"}],"title":"10.2.1. Compute Pipeline Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2468"}],"title":"10.3.1. Render Pipeline Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u24ea"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2460"}],"title":"13.1. GPUCommandsMixin\n\n"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2461"}],"title":"13.2.1. Command Encoder Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2462"}],"title":"13.7. Finalization"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2463"}],"title":"16.1.3. Finalization"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2464"}],"title":"17.1.2. Finalization"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2465"}],"title":"18.1.1. Render Bundle Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2466"}],"title":"18.1.3. Finalization"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2467"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2468"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u24ea"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u2460"}],"title":"19.2. GPUQueue\n\n"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u2461"}],"title":"20.1.1. QuerySet Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u2462"}],"title":"21.2. GPUCanvasContext"}],"url":"#abstract-opdef-generate-a-validation-error"},
+"abstract-opdef-generate-a-validation-error": {"dfnID":"abstract-opdef-generate-a-validation-error","dfnText":"generate a\n    validation error","external":false,"refSections":[{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461"}],"title":"3.6.1. Features"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462"}],"title":"5.1.3. Buffer Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2463"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2464"}],"title":"5.2. Buffer Mapping"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2465"}],"title":"6.1.3. Texture Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2466"}],"title":"6.2.1. Texture View Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2467"}],"title":"6.4.1. Importing External Textures"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2468"}],"title":"7.1.2. Sampler Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u24ea"}],"title":"8.1.1. Bind Group Layout Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2460"}],"title":"8.2.1. Bind Group Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2461"}],"title":"8.3.1. Pipeline Layout Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2462"}],"title":"9.1.1. Shader Module Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2463"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2464"}],"title":"10. Pipelines"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2465"}],"title":"10.1. Base pipelines"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2466"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2467"}],"title":"10.2.1. Compute Pipeline Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2460\u2468"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u24ea"}],"title":"10.3.1. Render Pipeline Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2460"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2461"}],"title":"13.1. GPUCommandsMixin\n\n"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2462"}],"title":"13.2.1. Command Encoder Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2463"}],"title":"13.7. Finalization"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2464"}],"title":"16.1.3. Finalization"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2465"}],"title":"17.1.2. Finalization"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2466"}],"title":"18.1.1. Render Bundle Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2467"}],"title":"18.1.3. Finalization"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2461\u2468"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u24ea"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u2460"},{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u2461"}],"title":"19.2. GPUQueue\n\n"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u2462"}],"title":"20.1.1. QuerySet Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-a-validation-error\u2462\u2463"}],"title":"21.2. GPUCanvasContext"}],"url":"#abstract-opdef-generate-a-validation-error"},
 "abstract-opdef-generate-an-internal-error": {"dfnID":"abstract-opdef-generate-an-internal-error","dfnText":"generate an\n    internal error","external":false,"refSections":[{"refs":[{"id":"ref-for-abstract-opdef-generate-an-internal-error"},{"id":"ref-for-abstract-opdef-generate-an-internal-error\u2460"}],"title":"10. Pipelines"},{"refs":[{"id":"ref-for-abstract-opdef-generate-an-internal-error\u2461"},{"id":"ref-for-abstract-opdef-generate-an-internal-error\u2462"}],"title":"10.2.1. Compute Pipeline Creation"},{"refs":[{"id":"ref-for-abstract-opdef-generate-an-internal-error\u2463"},{"id":"ref-for-abstract-opdef-generate-an-internal-error\u2464"}],"title":"10.3.1. Render Pipeline Creation"}],"url":"#abstract-opdef-generate-an-internal-error"},
 "abstract-opdef-generate-an-out-of-memory-error": {"dfnID":"abstract-opdef-generate-an-out-of-memory-error","dfnText":"\n    generate an out-of-memory error","external":false,"refSections":[{"refs":[{"id":"ref-for-abstract-opdef-generate-an-out-of-memory-error"}],"title":"5.1.3. Buffer Creation"}],"url":"#abstract-opdef-generate-an-out-of-memory-error"},
 "abstract-opdef-get-a-copy-of-the-image-contents-of-a-context": {"dfnID":"abstract-opdef-get-a-copy-of-the-image-contents-of-a-context","dfnText":"get a copy of the image contents of a context","external":false,"refSections":[{"refs":[{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context"}],"title":"3.4.1. Timelines"},{"refs":[{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context\u2460"}],"title":"17.1.1.3. Load & Store Operations"},{"refs":[{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context\u2461"},{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context\u2462"},{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context\u2463"}],"title":"21.2. GPUCanvasContext"},{"refs":[{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context\u2464"}],"title":"21.3. HTML Specification Hooks"},{"refs":[{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context\u2465"},{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context\u2466"},{"id":"ref-for-abstract-opdef-get-a-copy-of-the-image-contents-of-a-context\u2467"}],"title":"21.6. GPUCanvasAlphaMode\n\n"}],"url":"#abstract-opdef-get-a-copy-of-the-image-contents-of-a-context"},
@@ -24232,6 +24247,7 @@ let dfnPanelData = {
 "dom-gpurenderpipelinedescriptor-multisample": {"dfnID":"dom-gpurenderpipelinedescriptor-multisample","dfnText":"multisample","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2460"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2461"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2462"}],"title":"10.3.1. Render Pipeline Creation"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2463"}],"title":"17.1.1.4. Render Pass Layout"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2464"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2465"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2466"}],"title":"23.2.5. Rasterization"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2467"}],"title":"23.2.5.1. Point Rasterization"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2468"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-multisample\u2460\u24ea"}],"title":"23.2.5.4. Polygon Rasterization"}],"url":"#dom-gpurenderpipelinedescriptor-multisample"},
 "dom-gpurenderpipelinedescriptor-primitive": {"dfnID":"dom-gpurenderpipelinedescriptor-primitive","dfnText":"primitive","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2460"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2461"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2462"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2463"}],"title":"10.3.1. Render Pipeline Creation"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2464"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2465"}],"title":"17.2.1. Drawing"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2466"}],"title":"23.2. Rendering"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2467"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2468"}],"title":"23.2.4. Primitive Clipping"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2460\u24ea"}],"title":"23.2.5. Rasterization"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2460\u2460"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-primitive\u2460\u2461"}],"title":"23.2.5.4. Polygon Rasterization"}],"url":"#dom-gpurenderpipelinedescriptor-primitive"},
 "dom-gpurenderpipelinedescriptor-vertex": {"dfnID":"dom-gpurenderpipelinedescriptor-vertex","dfnText":"vertex","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2460"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2461"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2462"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2463"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2464"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2465"}],"title":"10.3.1. Render Pipeline Creation"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2466"}],"title":"10.3.7.1. Vertex Formats"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2467"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2468"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2460\u24ea"},{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2460\u2460"}],"title":"17.2.1. Drawing"},{"refs":[{"id":"ref-for-dom-gpurenderpipelinedescriptor-vertex\u2460\u2461"}],"title":"23.2. Rendering"}],"url":"#dom-gpurenderpipelinedescriptor-vertex"},
+"dom-gpurequestadapteroptions-featurelevel": {"dfnID":"dom-gpurequestadapteroptions-featurelevel","dfnText":"featureLevel","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-gpurequestadapteroptions-featurelevel"}],"title":"4.2. GPU"}],"url":"#dom-gpurequestadapteroptions-featurelevel"},
 "dom-gpurequestadapteroptions-forcefallbackadapter": {"dfnID":"dom-gpurequestadapteroptions-forcefallbackadapter","dfnText":"forceFallbackAdapter","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-gpurequestadapteroptions-forcefallbackadapter"},{"id":"ref-for-dom-gpurequestadapteroptions-forcefallbackadapter\u2460"}],"title":"4.2.2. Adapter Selection"}],"url":"#dom-gpurequestadapteroptions-forcefallbackadapter"},
 "dom-gpurequestadapteroptions-powerpreference": {"dfnID":"dom-gpurequestadapteroptions-powerpreference","dfnText":"powerPreference","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-gpurequestadapteroptions-powerpreference"}],"title":"4.2.2. Adapter Selection"}],"url":"#dom-gpurequestadapteroptions-powerpreference"},
 "dom-gpusampler-descriptor-slot": {"dfnID":"dom-gpusampler-descriptor-slot","dfnText":"[[descriptor]]","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-gpusampler-descriptor-slot"},{"id":"ref-for-dom-gpusampler-descriptor-slot\u2460"}],"title":"7.1.2. Sampler Creation"}],"url":"#dom-gpusampler-descriptor-slot"},
@@ -25935,6 +25951,7 @@ let refsData = {
 "#dom-gpurenderpipelinedescriptor-multisample": {"export":true,"for_":["GPURenderPipelineDescriptor"],"level":"","normative":true,"shortname":"webgpu","spec":"webgpu","status":"local","text":"multisample","type":"dict-member","url":"#dom-gpurenderpipelinedescriptor-multisample"},
 "#dom-gpurenderpipelinedescriptor-primitive": {"export":true,"for_":["GPURenderPipelineDescriptor"],"level":"","normative":true,"shortname":"webgpu","spec":"webgpu","status":"local","text":"primitive","type":"dict-member","url":"#dom-gpurenderpipelinedescriptor-primitive"},
 "#dom-gpurenderpipelinedescriptor-vertex": {"export":true,"for_":["GPURenderPipelineDescriptor"],"level":"","normative":true,"shortname":"webgpu","spec":"webgpu","status":"local","text":"vertex","type":"dict-member","url":"#dom-gpurenderpipelinedescriptor-vertex"},
+"#dom-gpurequestadapteroptions-featurelevel": {"export":true,"for_":["GPURequestAdapterOptions"],"level":"","normative":true,"shortname":"webgpu","spec":"webgpu","status":"local","text":"featureLevel","type":"dict-member","url":"#dom-gpurequestadapteroptions-featurelevel"},
 "#dom-gpurequestadapteroptions-forcefallbackadapter": {"export":true,"for_":["GPURequestAdapterOptions"],"level":"","normative":true,"shortname":"webgpu","spec":"webgpu","status":"local","text":"forceFallbackAdapter","type":"dict-member","url":"#dom-gpurequestadapteroptions-forcefallbackadapter"},
 "#dom-gpurequestadapteroptions-powerpreference": {"export":true,"for_":["GPURequestAdapterOptions"],"level":"","normative":true,"shortname":"webgpu","spec":"webgpu","status":"local","text":"powerPreference","type":"dict-member","url":"#dom-gpurequestadapteroptions-powerpreference"},
 "#dom-gpusampler-descriptor-slot": {"export":true,"for_":["GPUSampler"],"level":"","normative":true,"shortname":"webgpu","spec":"webgpu","status":"local","text":"[[descriptor]]","type":"attribute","url":"#dom-gpusampler-descriptor-slot"},
@@ -26660,6 +26677,7 @@ let refsData = {
 "https://webidl.spec.whatwg.org/#idl-DataView": {"export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"DataView","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-DataView"},
 "https://webidl.spec.whatwg.org/#idl-USVString": {"export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"USVString","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-USVString"},
 "https://webidl.spec.whatwg.org/#idl-Uint32Array": {"export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"Uint32Array","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-Uint32Array"},
+"https://webidl.spec.whatwg.org/#idl-any": {"export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"any","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-any"},
 "https://webidl.spec.whatwg.org/#idl-boolean": {"export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"boolean","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-boolean"},
 "https://webidl.spec.whatwg.org/#idl-double": {"export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"double","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-double"},
 "https://webidl.spec.whatwg.org/#idl-float": {"export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"float","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-float"},
